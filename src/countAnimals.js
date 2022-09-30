@@ -4,23 +4,22 @@ const { species } = data;
 
 function countAnimals(animal) {
   // seu código aqui
-  if (animal === undefined) {
-    const obj = {};
-    species.forEach((elements) => {
-      obj[elements.name] = elements.residents.length;
-    });
-    return obj;
+  if (!animal) {
+    const reapetAnimals = species.reduce((acc, curr) => {
+      acc[curr.name] = curr.residents.length;
+      return acc;
+    }, {});
+    return reapetAnimals;
   }
-
-  if (animal.sex === undefined) {
-    return species.find((specie) => specie.name === animal.specie).residents;
+  if (Object.keys(animal).length === 1) {
+    const total = species.find((e) => e.name === animal.specie);
+    return total.residents.length;
   }
-
-  if (animal.specie && animal.sex !== undefined) {
-    return species.find((specieSex) => specieSex.name === animal.specie).residents
-      .filter((resident) => resident.sex === animal.sex).length;
+  if (Object.keys(animal).length === 2) {
+    const foundAnimal = species.find((e) => e.name === animal.specie);
+    const maleorFemale = foundAnimal.residents.filter((each) => each.sex === animal.sex);
+    return maleorFemale.length;
   }
-  return species.find((e) => e.name === animal).residents.length;
 }
 
 module.exports = countAnimals;
