@@ -3,13 +3,13 @@ const getOpeningHours = require('../src/getOpeningHours');
 describe('Testes da função getOpeningHours', () => {
   test('Return object if dont set a argument', () => {
     const object = {
-      tuesday: { open: 8, close: 6 },
-      wednesday: { open: 8, close: 6 },
-      thursday: { open: 10, close: 8 },
-      friday: { open: 10, close: 8 },
-      saturday: { open: 8, close: 10 },
-      sunday: { open: 8, close: 8 },
-      monday: { open: 0, close: 0 },
+      Tuesday: { open: 8, close: 6 },
+      Wednesday: { open: 8, close: 6 },
+      Thursday: { open: 10, close: 8 },
+      Friday: { open: 10, close: 8 },
+      Saturday: { open: 8, close: 10 },
+      Sunday: { open: 8, close: 8 },
+      Monday: { open: 0, close: 0 },
     };
     expect(getOpeningHours()).toEqual(object);
   });
